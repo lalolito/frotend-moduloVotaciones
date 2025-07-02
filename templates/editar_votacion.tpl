@@ -5,6 +5,8 @@
 
 {if isset($smarty.get.error) && $smarty.get.error == "faltan_datos"}
     <p style="color: red;">⚠️ Todos los campos del formulario son obligatorios.</p>
+    <div class="alert alert-error">
+        ⚠️ Todos los campos del formulario son obligatorios.
 {/if}
 
 <form method="post" action="actualizar_votacion.php">

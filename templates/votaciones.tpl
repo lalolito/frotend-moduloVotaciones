@@ -5,23 +5,30 @@
 
 {if isset($smarty.get.mensaje)}
     {if $smarty.get.mensaje == "creada"}
-        <p style="color: green;">✅ Votación creada exitosamente.</p>
+        <div class="alert alert-success">✅ Votación creada exitosamente.</div>
     {elseif $smarty.get.mensaje == "actualizada"}
-        <p style="color: green;">✅ Votación actualizada correctamente.</p>
+        <div class="alert alert-success">✅ Votación actualizada correctamente.</div>
     {elseif $smarty.get.mensaje == "eliminada"}
-        <p style="color: green;">✅ Votación eliminada.</p>
+        <div class="alert alert-success">✅ Votación eliminada.</div>
     {/if}
 {/if}
 
 {if isset($smarty.get.error)}
     {if $smarty.get.error == "campos"}
-        <p style="color: red;">⚠️ Por favor completa todos los campos.</p>
+        <div class="alert alert-error">⚠️ Por favor completa todos los campos.</div>
     {elseif $smarty.get.error == "sin_id"}
-        <p style="color: red;">⚠️ No se especificó la votación a eliminar.</p>
+        <div class="alert alert-error">⚠️ No se especificó la votación a eliminar.</div>
     {elseif $smarty.get.error == "faltan_datos"}
-        <p style="color: red;">⚠️ Todos los campos del formulario son obligatorios.</p>
+        <div class="alert alert-error">⚠️ Todos los campos del formulario son obligatorios.</div>
     {/if}
 {/if}
+<script>
+    setTimeout(() => {
+        document.querySelectorAll('.alert').forEach(alert => {
+            alert.style.display = 'none';
+        });
+    }, 5000); // Oculta en 5 segundos
+</script>
 
 <a href="crear_votacion.php"><button>+ Nueva Votación</button></a>
 

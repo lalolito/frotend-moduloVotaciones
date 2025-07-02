@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.5.5, created on 2025-07-02 17:56:41
+/* Smarty version 4.5.5, created on 2025-07-02 23:16:40
   from 'C:\xampp\htdocs\front\templates\votaciones.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.5.5',
-  'unifunc' => 'content_686556b9d38631_89974229',
+  'unifunc' => 'content_6865a1b811c038_59986350',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '14fcbf16bff7cd989412f46bdaad470102902afd' => 
     array (
       0 => 'C:\\xampp\\htdocs\\front\\templates\\votaciones.tpl',
-      1 => 1751471262,
+      1 => 1751488172,
       2 => 'file',
     ),
   ),
@@ -20,25 +20,25 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_686556b9d38631_89974229 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6865a1b811c038_59986350 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_2109651391686556b9b277c3_45023437', "contenido");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_16280197996865a1b7c8fb17_70876559', "contenido");
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "layout.tpl");
 }
 /* {block "contenido"} */
-class Block_2109651391686556b9b277c3_45023437 extends Smarty_Internal_Block
+class Block_16280197996865a1b7c8fb17_70876559 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'contenido' => 
   array (
-    0 => 'Block_2109651391686556b9b277c3_45023437',
+    0 => 'Block_16280197996865a1b7c8fb17_70876559',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -48,23 +48,32 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 
 <?php if ((isset($_GET['mensaje']))) {?>
     <?php if ($_GET['mensaje'] == "creada") {?>
-        <p style="color: green;">✅ Votación creada exitosamente.</p>
+        <div class="alert alert-success">✅ Votación creada exitosamente.</div>
     <?php } elseif ($_GET['mensaje'] == "actualizada") {?>
-        <p style="color: green;">✅ Votación actualizada correctamente.</p>
+        <div class="alert alert-success">✅ Votación actualizada correctamente.</div>
     <?php } elseif ($_GET['mensaje'] == "eliminada") {?>
-        <p style="color: green;">✅ Votación eliminada.</p>
+        <div class="alert alert-success">✅ Votación eliminada.</div>
     <?php }
 }?>
 
 <?php if ((isset($_GET['error']))) {?>
     <?php if ($_GET['error'] == "campos") {?>
-        <p style="color: red;">⚠️ Por favor completa todos los campos.</p>
+        <div class="alert alert-error">⚠️ Por favor completa todos los campos.</div>
     <?php } elseif ($_GET['error'] == "sin_id") {?>
-        <p style="color: red;">⚠️ No se especificó la votación a eliminar.</p>
+        <div class="alert alert-error">⚠️ No se especificó la votación a eliminar.</div>
     <?php } elseif ($_GET['error'] == "faltan_datos") {?>
-        <p style="color: red;">⚠️ Todos los campos del formulario son obligatorios.</p>
+        <div class="alert alert-error">⚠️ Todos los campos del formulario son obligatorios.</div>
     <?php }
-}?>
+}
+echo '<script'; ?>
+>
+    setTimeout(() => {
+        document.querySelectorAll('.alert').forEach(alert => {
+            alert.style.display = 'none';
+        });
+    }, 5000); // Oculta en 5 segundos
+<?php echo '</script'; ?>
+>
 
 <a href="crear_votacion.php"><button>+ Nueva Votación</button></a>
 

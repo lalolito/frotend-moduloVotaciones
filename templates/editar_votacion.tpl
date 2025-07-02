@@ -12,15 +12,17 @@
 
     <label>Tipo de votación:</label>
     <select name="tipo_votacion" required>
+        <option value="">-- Seleccione --</option>
         {foreach from=$tipos_votacion item=tipo}
-            <option value="{$tipo}" {if $smarty.get.tipo_votacion == $tipo || (!isset($smarty.get.tipo_votacion) && $votacion.tipo == $tipo)}selected{/if}>{$tipo}</option>
+            <option value="{$tipo}" {if ($smarty.get.tipo_votacion|default:$votacion.tipo) == $tipo}selected{/if}>{$tipo}</option>
         {/foreach}
     </select><br><br>
 
     <label>Facultad:</label>
     <select name="facultad" required>
+        <option value="">-- Seleccione --</option>
         {foreach from=$facultades item=facultad}
-            <option value="{$facultad}" {if $smarty.get.facultad == $facultad || (!isset($smarty.get.facultad) && $votacion.facultad == $facultad)}selected{/if}>{$facultad}</option>
+            <option value="{$facultad}" {if ($smarty.get.facultad|default:$votacion.facultad) == $facultad}selected{/if}>{$facultad}</option>
         {/foreach}
     </select><br><br>
 

@@ -12,7 +12,7 @@
     <select name="tipo_votacion" required>
         <option value="">-- Seleccione --</option>
         {foreach from=$tipos_votacion item=tipo}
-            <option value="{$tipo}" {if $smarty.get.tipo_votacion == $tipo}selected{/if}>{$tipo}</option>
+            <option value="{$tipo}" {if ($smarty.get.tipo_votacion|default:'') == $tipo}selected{/if}>{$tipo}</option>
         {/foreach}
     </select><br><br>
 
@@ -20,15 +20,15 @@
     <select name="facultad" required>
         <option value="">-- Seleccione --</option>
         {foreach from=$facultades item=facultad}
-            <option value="{$facultad}" {if $smarty.get.facultad == $facultad}selected{/if}>{$facultad}</option>
+            <option value="{$facultad}" {if ($smarty.get.facultad|default:'') == $facultad}selected{/if}>{$facultad}</option>
         {/foreach}
     </select><br><br>
 
     <label>Fecha de inicio:</label>
-    <input type="datetime-local" name="fecha_inicio" value="{$smarty.get.fecha_inicio}" required><br><br>
+    <input type="datetime-local" name="fecha_inicio" value="{$smarty.get.fecha_inicio|default:''}" required><br><br>
 
     <label>Fecha de fin:</label>
-    <input type="datetime-local" name="fecha_fin" value="{$smarty.get.fecha_fin}" required><br><br>
+    <input type="datetime-local" name="fecha_fin" value="{$smarty.get.fecha_fin|default:''}" required><br><br>
 
     <button type="submit">Guardar Votación</button>
 </form>

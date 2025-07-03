@@ -1,12 +1,12 @@
 
 /* ========== VARIABLES DE COLOR INSTITUCIONAL ========== */
 :root {
-    --color-primario: #476b30;     /* Verde La Gran Colombia */
-    --color-secundario: #41632b;   /* Verde oscuro */
+    --color-primario: #274614;     /* Verde La Gran Colombia */
+    --color-secundario: #274614;   /* Verde oscuro */
     --color-fondo: #f2f2f2;
     --color-texto: #333;
-    --color-header: #456b2b;
-    --color-footer: #447324;
+    --color-header: #274614;
+    --color-footer: #274614;
     --color-negro: #000;
 }
 

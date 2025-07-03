@@ -5,29 +5,30 @@
 
 {if isset($smarty.get.mensaje)}
     {if $smarty.get.mensaje == "creada"}
-        <div class="alert alert-success">✅ Votación creada exitosamente.</div>
+        <div class="mensaje-notificacion">✅ Votación creada exitosamente.</div>
     {elseif $smarty.get.mensaje == "actualizada"}
-        <div class="alert alert-success">✅ Votación actualizada correctamente.</div>
+        <div class="mensaje-notificacion">✅ Votación actualizada correctamente.</div>
     {elseif $smarty.get.mensaje == "eliminada"}
-        <div class="alert alert-success">✅ Votación eliminada.</div>
+        <div class="mensaje-notificacion">✅ Votación eliminada.</div>
     {/if}
 {/if}
 
 {if isset($smarty.get.error)}
     {if $smarty.get.error == "campos"}
-        <div class="alert alert-error">⚠️ Por favor completa todos los campos.</div>
+        <div class="mensaje-notificacion error">⚠️ Por favor completa todos los campos.</div>
     {elseif $smarty.get.error == "sin_id"}
-        <div class="alert alert-error">⚠️ No se especificó la votación a eliminar.</div>
+        <div class="mensaje-notificacion error">⚠️ No se especificó la votación a eliminar.</div>
     {elseif $smarty.get.error == "faltan_datos"}
-        <div class="alert alert-error">⚠️ Todos los campos del formulario son obligatorios.</div>
+        <div class="mensaje-notificacion error">⚠️ Todos los campos del formulario son obligatorios.</div>
     {/if}
 {/if}
+
 <script>
     setTimeout(() => {
-        document.querySelectorAll('.alert').forEach(alert => {
+        document.querySelectorAll('.mensaje-notificacion').forEach(alert => {
             alert.style.display = 'none';
         });
-    }, 5000); // Oculta en 5 segundos
+    }, 5000);
 </script>
 
 <a href="crear_votacion.php"><button>+ Nueva Votación</button></a>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.5.5, created on 2025-07-02 22:12:31
+/* Smarty version 4.5.5, created on 2025-07-03 17:47:31
   from 'C:\xampp\htdocs\frotend-moduloVotaciones\templates\votaciones.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.5.5',
-  'unifunc' => 'content_686592af1851c5_22891010',
+  'unifunc' => 'content_6866a61320ef76_61356986',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4a9a50ca42ffbc1f7f8db5db3d289ae5f9eaa272' => 
     array (
       0 => 'C:\\xampp\\htdocs\\frotend-moduloVotaciones\\templates\\votaciones.tpl',
-      1 => 1751487147,
+      1 => 1751557646,
       2 => 'file',
     ),
   ),
@@ -20,25 +20,25 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_686592af1851c5_22891010 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6866a61320ef76_61356986 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_201001033686592af14acf9_56223404', "contenido");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_11567078666866a613094ba4_84915004', "contenido");
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "layout.tpl");
 }
 /* {block "contenido"} */
-class Block_201001033686592af14acf9_56223404 extends Smarty_Internal_Block
+class Block_11567078666866a613094ba4_84915004 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'contenido' => 
   array (
-    0 => 'Block_201001033686592af14acf9_56223404',
+    0 => 'Block_11567078666866a613094ba4_84915004',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -48,30 +48,31 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 
 <?php if ((isset($_GET['mensaje']))) {?>
     <?php if ($_GET['mensaje'] == "creada") {?>
-        <div class="alert alert-success">✅ Votación creada exitosamente.</div>
+        <div class="mensaje-notificacion">✅ Votación creada exitosamente.</div>
     <?php } elseif ($_GET['mensaje'] == "actualizada") {?>
-        <div class="alert alert-success">✅ Votación actualizada correctamente.</div>
+        <div class="mensaje-notificacion">✅ Votación actualizada correctamente.</div>
     <?php } elseif ($_GET['mensaje'] == "eliminada") {?>
-        <div class="alert alert-success">✅ Votación eliminada.</div>
+        <div class="mensaje-notificacion">✅ Votación eliminada.</div>
     <?php }
 }?>
 
 <?php if ((isset($_GET['error']))) {?>
     <?php if ($_GET['error'] == "campos") {?>
-        <div class="alert alert-error">⚠️ Por favor completa todos los campos.</div>
+        <div class="mensaje-notificacion error">⚠️ Por favor completa todos los campos.</div>
     <?php } elseif ($_GET['error'] == "sin_id") {?>
-        <div class="alert alert-error">⚠️ No se especificó la votación a eliminar.</div>
+        <div class="mensaje-notificacion error">⚠️ No se especificó la votación a eliminar.</div>
     <?php } elseif ($_GET['error'] == "faltan_datos") {?>
-        <div class="alert alert-error">⚠️ Todos los campos del formulario son obligatorios.</div>
+        <div class="mensaje-notificacion error">⚠️ Todos los campos del formulario son obligatorios.</div>
     <?php }
-}
-echo '<script'; ?>
+}?>
+
+<?php echo '<script'; ?>
 >
     setTimeout(() => {
-        document.querySelectorAll('.alert').forEach(alert => {
+        document.querySelectorAll('.mensaje-notificacion').forEach(alert => {
             alert.style.display = 'none';
         });
-    }, 5000); // Oculta en 5 segundos
+    }, 5000);
 <?php echo '</script'; ?>
 >
 

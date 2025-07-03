@@ -1,39 +1,29 @@
 {extends file="layout_VP.tpl"}
 
 {block name="contenido"}
-<h2>Administración del Módulo de Votaciones</h2>
+<h2 class="text-center">Administración del Módulo de Votaciones</h2>
+<p class="text-center">Selecciona el módulo que deseas administrar:</p>
 
-<p>Seleccione la sección a la que desea acceder:</p>
-
-<div class="card-container vertical-layout">
-    <div class="card full-width">
-        <div class="card-content">
-            <h3>🗳 Votaciones</h3>
-            <p>Administra la creación, modificación y supervisión de procesos de votación.</p>
-            <div class="card-actions">
-                <a href="controllers/votaciones.php" class="card-button">Ir a Votaciones</a>
-            </div>
-        </div>
+<div class="menu-principal">
+    <div class="menu-card">
+        <img src="assets/img/votaciones.png" alt="Votaciones">
+        <h3>Votaciones</h3>
+        <p>Gestiona fechas, tipos y reglas de votación.</p>
+        <a href="controllers/votaciones.php">Ingresar</a>
     </div>
 
-    <div class="card full-width">
-        <div class="card-content">
-            <h3>📋 Planchas</h3>
-            <p>Agrega y edita las planchas participantes en los procesos de votación.</p>
-            <div class="card-actions">
-                <a href="controllers/planchas.php" class="card-button">Ir a Planchas</a>
-            </div>
-        </div>
+    <div class="menu-card">
+        <img src="assets/img/planchas.png" alt="Planchas">
+        <h3>Planchas</h3>
+        <p>Registra y administra las planchas por votación.</p>
+        <a href="controllers/planchas.php">Ingresar</a>
     </div>
 
-    <div class="card full-width">
-        <div class="card-content">
-            <h3>📊 Reportes</h3>
-            <p>Descarga informes de escrutinio general y por facultad.</p>
-            <div class="card-actions">
-                <a href="controllers/reportes.php" class="card-button">Ir a Reportes</a>
-            </div>
-        </div>
+    <div class="menu-card">
+        <img src="assets/img/reportes.png" alt="Reportes">
+        <h3>Reportes</h3>
+        <p>Genera resultados generales o por facultad.</p>
+        <a href="controllers/reportes.php">Ingresar</a>
     </div>
 </div>
 {/block}

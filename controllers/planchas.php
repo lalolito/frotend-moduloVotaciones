@@ -11,13 +11,13 @@ $planchas = [
     [
         'id' => 1,
         'nombre' => 'Plancha Verde',
-        'imagen' => '../assets/img/image (8).png',
+        'imagen' => '../assets/img/ugc.png',
         'votacion' => 'Consejo Académico'
     ],
     [
         'id' => 2,
         'nombre' => 'Plancha Renovación',
-        'imagen' => '../assets/img/plancha2.jpg',
+        'imagen' => '../assets/img/plancha.png',
         'votacion' => 'Representante Estudiantil'
     ],
     [

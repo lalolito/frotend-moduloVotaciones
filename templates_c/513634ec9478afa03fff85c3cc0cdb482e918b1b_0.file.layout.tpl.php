@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.5.5, created on 2025-07-03 18:24:42
+/* Smarty version 4.5.5, created on 2025-07-07 22:26:21
   from 'C:\xampp\htdocs\frotend-moduloVotaciones\templates\layout.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.5.5',
-  'unifunc' => 'content_6866aecaba5389_15949401',
+  'unifunc' => 'content_686c2d6d34ca27_21651397',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '513634ec9478afa03fff85c3cc0cdb482e918b1b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\frotend-moduloVotaciones\\templates\\layout.tpl',
-      1 => 1751559872,
+      1 => 1751919971,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_6866aecaba5389_15949401 (Smarty_Internal_Template $_smarty_tpl) {
+function content_686c2d6d34ca27_21651397 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 ?>
@@ -35,12 +35,12 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, false);
     <link rel="stylesheet" href="../assets/css/estilo.css">
 </head>
 <body>
-    <?php $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+    <?php $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('usuario'=>(($tmp = $_smarty_tpl->tpl_vars['usuario']->value ?? null)===null||$tmp==='' ? '' ?? null : $tmp)), 0, false);
 ?>
 
     <main>
         <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_15096463016866aecab9d703_97982184', "contenido");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_790244762686c2d6d348387_69223930', "contenido");
 ?>
 
         <?php if ((isset($_smarty_tpl->tpl_vars['mensaje']->value))) {?>
@@ -67,7 +67,7 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_15096463016866aeca
         </div>
 
         <div class="burbuja-opcion">
-        <a href="../index.php">🏠</a>
+        <a href="vista_principal.php">🏠</a>
         <span class="tooltip-opcion">Inicio</span>
         </div>
     </div>
@@ -93,12 +93,12 @@ function toggleMenu() {
 
 <?php }
 /* {block "contenido"} */
-class Block_15096463016866aecab9d703_97982184 extends Smarty_Internal_Block
+class Block_790244762686c2d6d348387_69223930 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'contenido' => 
   array (
-    0 => 'Block_15096463016866aecab9d703_97982184',
+    0 => 'Block_790244762686c2d6d348387_69223930',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {

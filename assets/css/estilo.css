@@ -76,6 +76,39 @@ header h1 {
     color: white;
 }
 
+/* PERFIL DEL USUARIO */
+.perfil-usuario {
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.perfil-usuario span {
+    background-color: white;
+    color: var(--color-header);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.perfil-usuario .btn-salir {
+    background-color: #990000;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.perfil-usuario .btn-salir:hover {
+    background-color: #cc0000;
+}
+
 footer {
     background-color: var(--color-footer);
     color: white;
@@ -84,6 +117,7 @@ footer {
     font-size: 14px;
     margin-top: auto;
 }
+
 
 
 /* ========== NOTIFICACIONES ========== */
@@ -396,3 +430,39 @@ button:hover, .btn:hover {
 .p-1 { padding: 10px; }
 .p-2 { padding: 20px; }
 .p-3 { padding: 30px; }
+
+.form-login {
+  max-width: 400px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 30px 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.form-actions {
+  text-align: center;
+}
+
+.form-actions .btn {
+  padding: 10px 20px;
+  font-size: 15px;
+}

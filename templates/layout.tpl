@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../assets/css/estilo.css">
 </head>
 <body>
-    {include file="header.tpl"}
+    {include file="header.tpl" usuario=$usuario|default:''}
 
     <main>
         {block name="contenido"}{/block}
@@ -33,7 +33,7 @@
         </div>
 
         <div class="burbuja-opcion">
-        <a href="../index.php">🏠</a>
+        <a href="vista_principal.php">🏠</a>
         <span class="tooltip-opcion">Inicio</span>
         </div>
     </div>

@@ -1,4 +1,6 @@
-/* ========== VARIABLES DE COLOR INSTITUCIONAL ========== */
+/* ============================================
+=              VARIABLES GLOBALES             =
+============================================ */
 :root {
     --color-primario: #274614;
     --color-secundario: #274614;
@@ -12,7 +14,9 @@
     --color-rojo-hover: #990000;
 }
 
-/* ========== TIPOGRAFÍA ========== */
+/* ============================================
+=                 BASE GENERAL                =
+============================================ */
 html, body {
     height: 100%;
     margin: 0;
@@ -42,7 +46,9 @@ main {
     position: relative;
 }
 
-/* ========== HEADER Y FOOTER ========== */
+/* ============================================
+=              HEADER Y FOOTER                =
+============================================ */
 header {
     background-color: var(--color-header);
     color: white;
@@ -76,7 +82,6 @@ header h1 {
     color: white;
 }
 
-/* PERFIL DEL USUARIO */
 .perfil-usuario {
     position: absolute;
     right: 40px;
@@ -97,7 +102,7 @@ header h1 {
 }
 
 .perfil-usuario .btn-salir {
-    background-color: #990000;
+    background-color: var(--color-rojo-hover);
     color: white;
     padding: 6px 10px;
     border-radius: 5px;
@@ -106,7 +111,7 @@ header h1 {
 }
 
 .perfil-usuario .btn-salir:hover {
-    background-color: #cc0000;
+    background-color: var(--color-rojo);
 }
 
 footer {
@@ -118,9 +123,9 @@ footer {
     margin-top: auto;
 }
 
-
-
-/* ========== NOTIFICACIONES ========== */
+/* ============================================
+=                NOTIFICACIONES               =
+============================================ */
 .mensaje-notificacion {
     position: absolute;
     top: 10px;
@@ -140,8 +145,10 @@ footer {
     color: #a94442;
 }
 
-/* ========== BOTONES ========== */
-button, .btn {
+/* ============================================
+=                  BOTONES                    =
+============================================ */
+button, .btn, .card-button, .menu-card a {
     background-color: var(--color-primario);
     color: white;
     border: none;
@@ -149,24 +156,11 @@ button, .btn {
     border-radius: 4px;
     cursor: pointer;
     font-size: 14px;
+    text-decoration: none;
     transition: background-color 0.2s ease-in-out;
 }
 
-button:hover, .btn:hover {
-    background-color: var(--color-secundario);
-}
-
-.card-button {
-    background-color: var(--color-primario);
-    color: white;
-    padding: 8px 16px;
-    border-radius: 5px;
-    font-size: 14px;
-    text-decoration: none;
-    transition: background-color 0.2s ease;
-}
-
-.card-button:hover {
+button:hover, .btn:hover, .card-button:hover, .menu-card a:hover {
     background-color: var(--color-secundario);
 }
 
@@ -178,7 +172,9 @@ button:hover, .btn:hover {
     background-color: var(--color-rojo-hover);
 }
 
-/* ========== VISTA PRINCIPAL ========== */
+/* ============================================
+=              MENÚ PRINCIPAL                 =
+============================================ */
 .menu-principal {
     display: flex;
     gap: 30px;
@@ -226,16 +222,9 @@ button:hover, .btn:hover {
     min-height: 50px;
 }
 
-.menu-card a {
-    background-color: var(--color-primario);
-    color: white;
-    padding: 12px 24px;
-    border-radius: 6px;
-    display: inline-block;
-    font-size: 15px;
-}
-
-/* ========== PLANCHAS ========== */
+/* ============================================
+=                  PLANCHAS                   =
+============================================ */
 .card-container {
     display: flex;
     flex-direction: column;
@@ -269,7 +258,6 @@ button:hover, .btn:hover {
     border-radius: 6px;
     margin: 0 auto 15px;
 }
-
 
 .card-content {
     text-align: center;
@@ -314,21 +302,86 @@ button:hover, .btn:hover {
     margin-top: 8px;
 }
 
-/* ========== UTILITARIOS ========== */
-.text-center {
+/* ============================================
+=                FORMULARIOS                  =
+============================================ */
+.form-login {
+    max-width: 400px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 30px 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.form-actions {
     text-align: center;
 }
 
-.mt-1 { margin-top: 10px; }
-.mt-2 { margin-top: 20px; }
-.mt-3 { margin-top: 30px; }
+.form-actions .btn {
+    padding: 10px 20px;
+    font-size: 15px;
+}
 
-.p-1 { padding: 10px; }
-.p-2 { padding: 20px; }
-.p-3 { padding: 30px; }
+/* ============================================
+=                  MODALES                    =
+============================================ */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
 
+.modal-contenido {
+    background-color: #fff;
+    margin: 8% auto;
+    padding: 30px;
+    border-radius: 10px;
+    width: 500px;
+    text-align: center;
+    position: relative;
+}
 
-/* ========== MENU FLOTANTE ========== */
+.modal-contenido .img-modal {
+    width: 100%;
+    max-height: 220px;
+    object-fit: contain;
+    margin: 10px 0;
+}
+
+.cerrar {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* ============================================
+=               MENÚ FLOTANTE                 =
+============================================ */
 .menu-flotante {
     position: fixed;
     bottom: 80px;
@@ -383,7 +436,6 @@ button:hover, .btn:hover {
     font-weight: bold;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     transition: background-color 0.2s ease;
-    display: inline-block;
 }
 
 .burbuja-opcion a:hover {
@@ -411,17 +463,10 @@ button:hover, .btn:hover {
     opacity: 1;
 }
 
-
-
-
-.oculto {
-    display: none;
-}
-
-/* ========== UTILITARIOS ========== */
-.text-center {
-    text-align: center;
-}
+/* ============================================
+=                 UTILITARIOS                 =
+============================================ */
+.text-center { text-align: center; }
 
 .mt-1 { margin-top: 10px; }
 .mt-2 { margin-top: 20px; }
@@ -431,73 +476,4 @@ button:hover, .btn:hover {
 .p-2 { padding: 20px; }
 .p-3 { padding: 30px; }
 
-.form-login {
-  max-width: 400px;
-  margin: 40px auto;
-  background: #fff;
-  padding: 30px 25px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-.form-group {
-  margin-bottom: 20px;
-}
-
-.form-group label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 8px;
-}
-
-.form-group input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 14px;
-}
-
-.form-actions {
-  text-align: center;
-}
-
-.form-actions .btn {
-  padding: 10px 20px;
-  font-size: 15px;
-}
-
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0; top: 0;
-  width: 100%; height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.modal-contenido {
-  background-color: #fff;
-  margin: 8% auto;
-  padding: 30px;
-  border-radius: 10px;
-  width: 500px;
-  text-align: center;
-  position: relative;
-}
-
-.modal-contenido .img-modal {
-  width: 100%;
-  max-height: 220px;
-  object-fit: contain;
-  margin: 10px 0;
-}
-
-.cerrar {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
-}
+.oculto { display: none; }

@@ -37,13 +37,25 @@ body {
 
 main {
     flex: 1;
+    width: 100%;
     max-width: 1400px;
+    min-width: 0;
     margin: 0 auto;
     padding: 30px 40px;
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
     position: relative;
+    transition: padding 0.2s, max-width 0.2s;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+h1, h2, h3, h4 {
+    word-break: break-word;
 }
 
 /* ============================================
@@ -58,6 +70,9 @@ header {
     justify-content: center;
     height: 120px;
     position: relative;
+    flex-wrap: wrap;
+    min-height: 80px;
+    box-sizing: border-box;
 }
 
 .logo {
@@ -73,6 +88,7 @@ header {
     height: 100px;
     width: auto;
     vertical-align: middle;
+    max-width: 40vw;
 }
 
 header h1 {
@@ -80,6 +96,7 @@ header h1 {
     margin: 0;
     text-align: center;
     color: white;
+    flex: 1 1 100%;
 }
 
 .perfil-usuario {
@@ -477,3 +494,152 @@ button:hover, .btn:hover, .card-button:hover, .menu-card a:hover {
 .p-3 { padding: 30px; }
 
 .oculto { display: none; }
+
+/* ============================================
+=            MEDIA QUERIES (RESPONSIVE)       =
+============================================ */
+/* Pantallas grandes (≥1600px) */
+@media (min-width: 1600px) {
+    main {
+        max-width: 90vw;
+        padding: 3vw 10vw;
+    }
+}
+
+/* Tablets (≤1024px) */
+@media (max-width: 1024px) {
+    main {
+        max-width: 98vw;
+        padding: 20px 10px;
+    }
+    
+    .menu-principal {
+        flex-wrap: wrap;
+        gap: 20px;
+        padding: 10px;
+    }
+    
+    .menu-card {
+        width: 90vw;
+        max-width: 400px;
+        height: auto;
+        padding: 20px 10px;
+    }
+    
+    .card {
+        max-width: 98vw;
+        padding: 15px 8px;
+    }
+    
+    .form-login {
+        max-width: 95vw;
+        padding: 20px 10px;
+    }
+    
+    header {
+        padding: 18px 10px;
+        height: auto;
+    }
+    
+    .logo {
+        left: 10px;
+    }
+    
+    .perfil-usuario {
+        right: 10px;
+    }
+    
+    header h1 {
+        font-size: 26px;
+    }
+    
+    .logo img {
+        height: 70px;
+    }
+}
+
+/* Móviles (≤600px) */
+@media (max-width: 600px) {
+    header, footer {
+        padding: 15px 5px;
+        height: auto;
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .logo {
+        position: static;
+        transform: none;
+        margin-bottom: 10px;
+        justify-content: center;
+    }
+    
+    .logo img {
+        height: 60px;
+    }
+    
+    header h1 {
+        font-size: 22px;
+    }
+    
+    .perfil-usuario {
+        position: static;
+        transform: none;
+        margin-top: 10px;
+        flex-direction: column;
+        gap: 6px;
+    }
+    
+    main {
+        padding: 10px 2vw;
+        max-width: 100vw;
+    }
+    
+    .menu-principal {
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 20px;
+        padding: 5px;
+    }
+    
+    .menu-card {
+        width: 98vw;
+        max-width: 100%;
+        padding: 12px 4px;
+        height: auto;
+    }
+    
+    .menu-card img {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .card-container {
+        gap: 20px;
+        margin-top: 20px;
+    }
+    
+    .card {
+        padding: 10px 4px;
+        max-width: 100vw;
+    }
+    
+    .card-photos img {
+        width: 70px;
+    }
+    
+    .modal-contenido {
+        width: 98vw;
+        padding: 10px 2vw;
+    }
+    
+    .form-login {
+        padding: 10px 2vw;
+        max-width: 100vw;
+    }
+    
+    .menu-flotante {
+        left: 10px;
+        bottom: 10px;
+    }
+}

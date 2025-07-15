@@ -49,14 +49,7 @@ class votacionModel extends mainModel {
                 'DER' => 'Derecho',
                 'ING' => 'Ingeniería',
                 'ECO' => 'Economía',
-                'SAL' => 'Salud',
-                'MED' => 'Medicina',
-                'EDU' => 'Educación',
-                'ADM' => 'Administración',
-                'CON' => 'Consiliatura/Contaduría',
-                'CIE' => 'Ciencias',
-                'SOC' => 'Ciencias Sociales',
-                'GEN' => 'General',
+                'EDU' => 'Educación',   
                 'ARQ' => 'Arquitectura'
             ];
             
@@ -112,14 +105,7 @@ class votacionModel extends mainModel {
                 'DER' => 'Derecho',
                 'ING' => 'Ingeniería',
                 'ECO' => 'Economía',
-                'SAL' => 'Salud',
-                'MED' => 'Medicina',
-                'EDU' => 'Educación',
-                'ADM' => 'Administración',
-                'CON' => 'Consiliatura/Contaduría',
-                'CIE' => 'Ciencias',
-                'SOC' => 'Ciencias Sociales',
-                'GEN' => 'General',
+                'EDU' => 'Educación',   
                 'ARQ' => 'Arquitectura'
             ];
             

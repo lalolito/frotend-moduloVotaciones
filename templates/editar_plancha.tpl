@@ -4,16 +4,36 @@
 <h2>Editar Plancha</h2>
 
 <form method="post" action="actualizar_plancha.php" enctype="multipart/form-data">
-    <input type="hidden" name="id" value="{$plancha.id}">
+    <!-- ID de la plancha -->
+    <input type="hidden" name="id" value="{$plancha.ID_OPCION_PREGUNTA}">
+    <!-- URL actual de la imagen -->
+    <input type="hidden" name="url_actual" value="{$plancha.URL}">
 
+    <!-- Nombre -->
     <label>Nombre de la plancha:</label>
-    <input type="text" name="nombre" value="{$plancha.nombre}" required><br><br>
+    <input type="text" name="nombre" value="{$plancha.OPCION}" required><br><br>
 
-    <p><strong>Votación asociada:</strong> {$plancha.votacion}</p><br>
+    <!-- Pregunta asociada -->
+    <label>Pregunta asociada:</label>
+    <select name="pregunta" required>
+        {foreach from=$preguntas item=preg}
+            <option value="{$preg.ID_PREGUNTA}" {if $preg.ID_PREGUNTA == $plancha.id_pregunta}selected{/if}>{$preg.PREGUNTA}</option>
+        {/foreach}
+    </select><br><br>
 
+    <!-- Tipo de solicitud -->
+    <label>Tipo de solicitud:</label>
+    <select name="tipo" required>
+        {foreach from=$tipos item=tipo}
+            <option value="{$tipo.ID_TIPO_SOLICITUD}" {if $tipo.ID_TIPO_SOLICITUD == $plancha.id_tipo}selected{/if}>{$tipo.TIPO_SOLICITUD}</option>
+        {/foreach}
+    </select><br><br>
+
+    <!-- Imagen actual -->
     <label>Imagen actual:</label><br>
-    <img src="{$plancha.imagen}" alt="Imagen actual" style="width: 200px; height: auto;"><br><br>
+    <img src="{$plancha.URL}" alt="Imagen actual" style="width: 200px;"><br><br>
 
+    <!-- Subir nueva imagen -->
     <label>Subir nueva imagen (opcional):</label>
     <input type="file" name="imagen" accept="image/*"><br><br>
 

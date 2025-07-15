@@ -8,36 +8,30 @@ $action = $_GET["action"] ?? '';
 
 switch ($action) {
 
-    // Registrar nueva plancha
     case "registrar":
         $ctrl->guardar();
         break;
 
-    // Obtener preguntas disponibles
     case "preguntas":
         $resultado = $ctrl->modelo->obtenerPreguntas();
         echo json_encode($resultado->fetchAll(PDO::FETCH_ASSOC));
         break;
 
-    // Obtener tipos de solicitud con servicio VOT
     case "tipos":
         $resultado = $ctrl->modelo->obtenerTiposVotacion();
         echo json_encode($resultado->fetchAll(PDO::FETCH_ASSOC));
         break;
 
-    // Obtener todas las planchas (detalle completo)
     case "planchas":
         $resultado = $ctrl->modelo->obtenerPlanchas();
         echo json_encode($resultado->fetchAll(PDO::FETCH_ASSOC));
         break;
 
-    // Obtener solo ID, nombre y URL (modo resumido)
     case "listar":
         $resultado = $ctrl->modelo->listarPlanchas();
         echo json_encode($resultado->fetchAll(PDO::FETCH_ASSOC));
         break;
 
-    // Eliminar plancha por ID
     case "eliminar":
         if (!isset($_GET["id"])) {
             echo json_encode(["status" => "error", "mensaje" => "ID no enviado"]);
@@ -54,7 +48,6 @@ switch ($action) {
         }
         break;
 
-    // Obtener una plancha específica por ID
     case "obtener":
         if (!isset($_GET["id"])) {
             echo json_encode(["status" => "error", "mensaje" => "ID no enviado"]);
@@ -66,9 +59,8 @@ switch ($action) {
         echo json_encode($resultado ?: []);
         break;
 
-    // Actualizar una plancha
     case "actualizar":
-        $ctrl->actualizar(); // Ya imprime JSON
+        $ctrl->actualizar();
         break;
 
 

@@ -13,26 +13,10 @@ class planchaController {
         $this->modelo = new planchaModel();
     }
 
-    // Vista que carga preguntas y tipos para la gestión de planchas
-    public function vistaGestionar() {
-        $preguntas = $this->modelo->obtenerPreguntas()->fetchAll(\PDO::FETCH_ASSOC);
-        $tipos     = $this->modelo->obtenerTiposVotacion()->fetchAll(\PDO::FETCH_ASSOC);
-
-        $smarty = new \Smarty();
-        $smarty->setTemplateDir('templates');
-        $smarty->setCompileDir('templates_c');
-
-        $smarty->assign('preguntas', $preguntas);
-        $smarty->assign('tipos', $tipos);
-
-        $smarty->display('gestionar_planchas.tpl');
-    }
-
-    // Guardar nueva plancha
     public function guardar() {
-        $idPregunta = $_POST["pregunta"] ?? null;
-        $idTipo     = $_POST["tipo"] ?? null;
-        $nombre     = $_POST["nombre"] ?? null;
+        $idPregunta = $_POST["pregunta"]  ?? null;
+        $idTipo     = $_POST["tipo"]      ?? null;
+        $nombre     = $_POST["nombre"]    ?? null;
         $agrupador  = $_POST["agrupador"] ?? null;
 
         if (!$idPregunta || !$idTipo || !$nombre || !$agrupador) {
@@ -40,10 +24,11 @@ class planchaController {
             exit;
         }
 
+        // Obtener o crear la relación entre pregunta y tipo
         $idrelacion = $this->modelo->obtenerIDRelacion($idPregunta, $idTipo);
-        $url = null;
 
-        // Guardar imagen en carpeta
+        // Procesar imagen
+        $url = null;
         if (!empty($_FILES["imagen"]["name"])) {
             $folder = __DIR__ . "/../assets/img/planchas";
             if (!file_exists($folder)) mkdir($folder, 0777, true);
@@ -53,31 +38,33 @@ class planchaController {
             move_uploaded_file($_FILES["imagen"]["tmp_name"], $ruta);
             $url = "assets/img/planchas/$nombreArchivo";
         } elseif (!empty($_POST["url"])) {
-            $url = $_POST["url"];
+            $url = $_POST["url"]; // URL enviada manualmente (raro, pero compatible)
         }
 
+        // Guardar en base de datos
         try {
             $this->modelo->guardarPlancha($idrelacion, $nombre, $url);
             echo json_encode(["status" => "ok"]);
         } catch (\Throwable $e) {
             echo json_encode(["status" => "error", "mensaje" => $e->getMessage()]);
         }
+
         exit;
     }
 
-    // Actualizar una plancha existente
     public function actualizar() {
-        $id      = $_POST["id"]      ?? null;
-        $nombre  = $_POST["nombre"]  ?? null;
-        $agrupador = $_POST["agrupador"] ?? null;
-        $url     = $_POST["url"]     ?? null;
+        $id         = $_POST["id"]         ?? null;
+        $nombre     = $_POST["nombre"]     ?? null;
+        $idPregunta = $_POST["pregunta"]   ?? null;
+        $idTipo     = $_POST["tipo"]       ?? null;
+        $url        = $_POST["url_actual"] ?? null;
 
-        if (!$id || !$nombre) {
+        if (!$id || !$nombre || !$idPregunta || !$idTipo) {
             echo json_encode(["status" => "error", "mensaje" => "Faltan datos"]);
             return;
         }
 
-        // Reemplazar imagen si se sube una nueva
+        // Procesar nueva imagen si fue enviada
         if (!empty($_FILES["imagen"]["name"])) {
             $folder = __DIR__ . "/../assets/img/planchas";
             if (!file_exists($folder)) mkdir($folder, 0777, true);
@@ -88,9 +75,14 @@ class planchaController {
             $url = "assets/img/planchas/$nombreArchivo";
         }
 
+        // Obtener nueva relación entre pregunta y tipo
+        $idRelacion = $this->modelo->obtenerIDRelacion($idPregunta, $idTipo);
+
+        // Actualizar en base de datos
         try {
-            $this->modelo->actualizarPlancha($id, $nombre, $url);
-            echo json_encode(["status" => "ok"]);
+            $this->modelo->actualizarPlancha($id, $idRelacion, $nombre, $url);
+            header("Location: ../views/planchas.php?mensaje=actualizada");
+            exit;
         } catch (\Throwable $e) {
             echo json_encode(["status" => "error", "mensaje" => $e->getMessage()]);
         }

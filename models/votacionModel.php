@@ -49,8 +49,8 @@ class votacionModel extends mainModel {
                 'DER' => 'Derecho',
                 'ING' => 'Ingeniería',
                 'ECO' => 'Economía',
-                'EDU' => 'Educación',   
-                'ARQ' => 'Arquitectura'
+                'ARQ' => 'Arquitectura',
+                'EDU' => 'Educación'
             ];
             
             $votacion['FACULTAD'] = $facultades_map[$codigo_facultad] ?? 'Facultad no identificada';
@@ -105,8 +105,8 @@ class votacionModel extends mainModel {
                 'DER' => 'Derecho',
                 'ING' => 'Ingeniería',
                 'ECO' => 'Economía',
-                'EDU' => 'Educación',   
-                'ARQ' => 'Arquitectura'
+                'ARQ' => 'Arquitectura',
+                'EDU' => 'Educación'
             ];
             
             $votacion['FACULTAD'] = $facultades_map[$codigo_facultad] ?? 'Facultad no identificada';

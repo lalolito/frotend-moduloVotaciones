@@ -1,18 +1,21 @@
 <?php
 
 require_once('../libs/Smarty.class.php');
+require_once('../controllers/planchaController.php');
+
+use app\controllers\planchaController;
+
+$ctrl = new planchaController();
 
 $smarty = new Smarty();
 $smarty->template_dir = '../templates';
 $smarty->compile_dir = '../templates_c';
 
-// Simulación de votaciones existentes para asociar
-$votaciones = [
-    [ 'id' => 1, 'nombre' => 'Consejo Académico' ],
-    [ 'id' => 2, 'nombre' => 'Representante Estudiantil' ],
-    [ 'id' => 3, 'nombre' => 'Consejo de Facultad' ]
-];
+$preguntas = $ctrl->modelo->obtenerPreguntas();
+$tipos     = $ctrl->modelo->obtenerTiposVotacion();
 
-$smarty->assign("votaciones", $votaciones);
+$smarty->assign("preguntas", $preguntas->fetchAll(PDO::FETCH_ASSOC));
+$smarty->assign("tipos", $tipos->fetchAll(PDO::FETCH_ASSOC));
 $smarty->assign("titulo_pagina", "Crear Nueva Plancha");
 $smarty->display('crear_plancha.tpl');
+

@@ -505,6 +505,12 @@ button:hover, .btn:hover, .card-button:hover, .menu-card a:hover {
         padding: 3vw 10vw;
     }
 }
+@media (min-width: 1600px) {
+    main {
+        max-width: 80vw;
+        padding: 3vw 10vw;
+    }
+}
 
 /* Tablets (≤1024px) */
 @media (max-width: 1024px) {

@@ -24,7 +24,7 @@ class planchaController {
             exit;
         }
 
-        // Obtener o crear la relación entre pregunta y tipo
+        
         $idrelacion = $this->modelo->obtenerIDRelacion($idPregunta, $idTipo);
 
         // Procesar imagen
@@ -38,7 +38,7 @@ class planchaController {
             move_uploaded_file($_FILES["imagen"]["tmp_name"], $ruta);
             $url = "assets/img/planchas/$nombreArchivo";
         } elseif (!empty($_POST["url"])) {
-            $url = $_POST["url"]; // URL enviada manualmente (raro, pero compatible)
+            $url = $_POST["url"];
         }
 
         // Guardar en base de datos

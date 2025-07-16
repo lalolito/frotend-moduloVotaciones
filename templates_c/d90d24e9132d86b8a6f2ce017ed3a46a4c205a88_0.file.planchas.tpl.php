@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.5.5, created on 2025-07-16 18:17:05
+/* Smarty version 4.5.5, created on 2025-07-16 21:28:44
   from 'C:\Xampp\htdocs\frotend-moduloVotaciones\templates\planchas.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.5.5',
-  'unifunc' => 'content_6877d0811867f3_62209600',
+  'unifunc' => 'content_6877fd6c9cd8a0_56534953',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd90d24e9132d86b8a6f2ce017ed3a46a4c205a88' => 
     array (
       0 => 'C:\\Xampp\\htdocs\\frotend-moduloVotaciones\\templates\\planchas.tpl',
-      1 => 1752682622,
+      1 => 1752694120,
       2 => 'file',
     ),
   ),
@@ -20,25 +20,25 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6877d0811867f3_62209600 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6877fd6c9cd8a0_56534953 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_19698767446877d081163ea2_48923831', "contenido");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_10850244086877fd6c9b09a4_08966505', "contenido");
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "layout.tpl");
 }
 /* {block "contenido"} */
-class Block_19698767446877d081163ea2_48923831 extends Smarty_Internal_Block
+class Block_10850244086877fd6c9b09a4_08966505 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'contenido' => 
   array (
-    0 => 'Block_19698767446877d081163ea2_48923831',
+    0 => 'Block_10850244086877fd6c9b09a4_08966505',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -84,9 +84,10 @@ $_smarty_tpl->tpl_vars['plancha']->do_else = false;
 ?>
     <div class="card" data-id="<?php echo $_smarty_tpl->tpl_vars['plancha']->value['id'];?>
 ">
-        <img class="card-img" src="<?php echo $_smarty_tpl->tpl_vars['plancha']->value['imagen'];?>
+        <img class="card-img" src="http://localhost/frotend-moduloVotaciones/<?php echo $_smarty_tpl->tpl_vars['plancha']->value['imagen'];?>
 " alt="Plancha <?php echo $_smarty_tpl->tpl_vars['plancha']->value['nombre'];?>
 ">
+
 
         <div class="card-content">
             <h4><?php echo $_smarty_tpl->tpl_vars['plancha']->value['nombre'];?>

@@ -35,7 +35,8 @@
 <div class="card-container">
     {foreach from=$planchas item=plancha}
     <div class="card" data-id="{$plancha.id}">
-        <img class="card-img" src="{$plancha.imagen}" alt="Plancha {$plancha.nombre}">
+        <img class="card-img" src="http://localhost/frotend-moduloVotaciones/{$plancha.imagen}" alt="Plancha {$plancha.nombre}">
+
 
         <div class="card-content">
             <h4>{$plancha.nombre}</h4>

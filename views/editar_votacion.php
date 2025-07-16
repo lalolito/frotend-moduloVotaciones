@@ -53,16 +53,11 @@ try {
     ];
     
     $facultades = [
-        "Ingeniería",
         "Derecho",
-        "Educación",
-        "Arquitectura",
+        "Ingeniería",
         "Economía",
-        "Salud",
-        "Medicina",
-        "Administración",
-        "Ciencias",
-        "Ciencias Sociales"
+        "Arquitectura",
+        "Educación"
     ];
     
     $tipos_dependiente = [

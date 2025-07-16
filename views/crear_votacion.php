@@ -43,12 +43,7 @@ if ($_POST) {
         'Derecho' => 'DER',
         'Educación' => 'EDU',
         'Arquitectura' => 'ARQ',
-        'Economía' => 'ECO',
-        'Salud' => 'SAL',
-        'Medicina' => 'MED',
-        'Administración' => 'ADM',
-        'Ciencias' => 'CIE',
-        'Ciencias Sociales' => 'SOC'
+        'Economía' => 'ECO'
     ];
 
     // Por defecto, asumimos que es para estudiantes (E)
@@ -106,18 +101,13 @@ $tipos_votacion = [
     "Representante Administrativo"
 ];
 
-$facultades = [
-    "Ingeniería", 
-    "Derecho", 
-    "Educación", 
-    "Arquitectura",
-    "Economía",
-    "Salud",
-    "Medicina",
-    "Administración",
-    "Ciencias",
-    "Ciencias Sociales"
-];
+  $facultades = [
+        "Derecho",
+        "Ingeniería",
+        "Economía",
+        "Arquitectura",
+        "Educación"
+    ];
 
 $smarty->assign("tipos_votacion", $tipos_votacion);
 $smarty->assign("facultades", $facultades);

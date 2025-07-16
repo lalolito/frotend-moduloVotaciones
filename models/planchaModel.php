@@ -6,10 +6,12 @@ use PDO;
 
 class planchaModel extends mainModel {
 
+
     // Obtener conexión directa desde fuera
     public function getConexion() {
         return $this->conectar();
     }
+
 
     // Guarda una nueva plancha
     public function guardarPlancha($idSolicitudPregunta, $nombre, $url) {
@@ -20,6 +22,7 @@ class planchaModel extends mainModel {
         ];
         return $this->guardarDatos("ugc_opcion_pregunta", $datos);
     }
+
 
     // Actualiza una plancha existente
     public function actualizarPlancha($id, $idSolicitudPregunta, $nombre, $url) {
@@ -36,20 +39,24 @@ class planchaModel extends mainModel {
         return $this->actualizarDatos("ugc_opcion_pregunta", $datos, $condicion);
     }
 
+
     // Elimina una plancha por ID
     public function eliminarPlancha($id) {
         return $this->eliminarRegistro("ugc_opcion_pregunta", "ID_OPCION_PREGUNTA", $id);
     }
+
 
     // Retorna todas las planchas (para listar)
     public function obtenerPlanchas() {
         return $this->ejecutarConsulta("SELECT * FROM ugc_opcion_pregunta");
     }
 
+
     // Lista básica con ID, nombre y URL
     public function listarPlanchas() {
         return $this->ejecutarConsulta("SELECT ID_OPCION_PREGUNTA, OPCION, URL FROM ugc_opcion_pregunta");
     }
+
 
     // Obtener una plancha específica por ID
     public function obtenerPlanchaPorID($id) {
@@ -59,15 +66,18 @@ class planchaModel extends mainModel {
         return $sql->fetch(PDO::FETCH_ASSOC);
     }
 
+
     // Obtiene todas las preguntas para los formularios
     public function obtenerPreguntas() {
         return $this->ejecutarConsulta("SELECT * FROM ugc_preguntas");
     }
 
+
     // Obtiene los tipos de solicitud disponibles
     public function obtenerTiposVotacion() {
         return $this->ejecutarConsulta("SELECT * FROM ugc_tipo_solicitud WHERE SERVICIO = 'VOT'");
     }
+
 
     // Devuelve o crea la relación entre pregunta y tipo de solicitud
     public function obtenerIDRelacion($idPregunta, $idTipoSolicitud) {
@@ -98,6 +108,7 @@ class planchaModel extends mainModel {
         return $pdo->lastInsertId();
     }
 
+
     // Extrae ID_PREGUNTA y ID_TIPO_SOLICITUD a partir de la relación
     public function obtenerPreguntaPorRelacion($idRelacion) {
         $sql = $this->conectar()->prepare("
@@ -110,6 +121,7 @@ class planchaModel extends mainModel {
         return $sql->fetch(PDO::FETCH_ASSOC);
     }
 
+    
     // Alternativa si solo necesitas el tipo
     public function obtenerTipoPorRelacion($idRelacion) {
         $sql = $this->conectar()->prepare("SELECT ID_TIPO_SOLICITUD FROM ugc_solicitud_preguntas WHERE ID_SOLICITUD_PREGUNTA = :id");

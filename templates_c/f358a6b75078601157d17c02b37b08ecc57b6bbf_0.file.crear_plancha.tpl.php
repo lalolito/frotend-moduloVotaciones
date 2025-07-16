@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.5.5, created on 2025-07-16 19:45:02
+/* Smarty version 4.5.5, created on 2025-07-16 21:59:46
   from 'C:\Xampp\htdocs\frotend-moduloVotaciones\templates\crear_plancha.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.5.5',
-  'unifunc' => 'content_6877e51e8f36a0_85480659',
+  'unifunc' => 'content_687804b2263093_89355592',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f358a6b75078601157d17c02b37b08ecc57b6bbf' => 
     array (
       0 => 'C:\\Xampp\\htdocs\\frotend-moduloVotaciones\\templates\\crear_plancha.tpl',
-      1 => 1752687882,
+      1 => 1752695326,
       2 => 'file',
     ),
   ),
@@ -20,25 +20,25 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6877e51e8f36a0_85480659 (Smarty_Internal_Template $_smarty_tpl) {
+function content_687804b2263093_89355592 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_14694214826877e51e8e2ba9_81252886', "contenido");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1610431318687804b2252662_73697766', "contenido");
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "layout.tpl");
 }
 /* {block "contenido"} */
-class Block_14694214826877e51e8e2ba9_81252886 extends Smarty_Internal_Block
+class Block_1610431318687804b2252662_73697766 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'contenido' => 
   array (
-    0 => 'Block_14694214826877e51e8e2ba9_81252886',
+    0 => 'Block_1610431318687804b2252662_73697766',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -124,7 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(data => {
             if (data.status === "ok") {
                 Swal.fire({
-                    title: "✅ ¡Plancha registrada!",
+                    title: "¡Plancha registrada!",
                     text: "Se creó correctamente.",
                     icon: "success",
                     confirmButtonText: "Ver planchas"
@@ -141,7 +141,7 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .catch(error => {
             Swal.fire({
-                title: "⚠️ Error inesperado",
+                title: " Error inesperado",
                 text: "Revisa la consola para más información.",
                 icon: "warning"
             });

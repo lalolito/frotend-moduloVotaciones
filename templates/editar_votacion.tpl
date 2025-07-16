@@ -130,39 +130,37 @@
 </style>
 
 <div class="form-container">
-    <h2>Editar Votación</h2> {* Cambiado el título para reflejar "Editar" *}
-    {if isset($smarty.get.error) && $smarty.get.error == "faltan_datos"}
-        <div class="alert alert-error">
-            ⚠️ Todos los campos del formulario son obligatorios.
-        </div>
-    {/if}
-    {if isset($smarty.get.error) && $smarty.get.error == "error_sistema"}
-        <div class="alert alert-error">
-            ⚠️ {$smarty.get.mensaje|default:"Error del sistema"}
-        </div>
-    {/if}
+    <h2>Editar Votación</h2>
+
     {if isset($error_mensaje)}
         <div class="alert alert-error">
             ⚠️ {$error_mensaje}
         </div>
     {/if}
-    <form method="post" action="crear_votacion.php"> {* Asumiendo que la acción sigue siendo la misma o se ajustará *}
+
+    {* CAMBIO 1: Cambiamos el action para que apunte al script que realmente edita *}
+    <form method="post" action="modificar_votacion.php">
+    
+        {* CAMBIO 2: Campo oculto para enviar el ID de la votación *}
+        <input type="hidden" name="id_tipo_solicitud" value="{$votacion.id}">
+
         <div class="form-group">
-            <label for="tipo_votacion">Tipo de votación:</label>
-            <select name="tipo_votacion" id="tipo_votacion" required>
+            <label for="tipo_solicitud">Tipo de votación:</label>
+            <select name="tipo_solicitud" id="tipo_solicitud" required>
                 <option value="">-- Seleccione --</option>
                 {foreach from=$tipos_votacion item=tipo}
-                    <option value="{$tipo}" {if ($smarty.get.tipo_votacion|default:'') == $tipo}selected{/if}>{$tipo}</option>
+                    <option value="{$tipo}" {if $votacion.tipo == $tipo}selected{/if}>{$tipo}</option>
                 {/foreach}
             </select>
         </div>
 
         <div class="form-group">
-            <label for="facultad">Facultad:</label>
-            <select name="facultad" id="facultad" required>
+            <label for="agrupador">Facultad (agrupador):</label>
+            <select name="agrupador" id="agrupador" required>
                 <option value="">-- Seleccione --</option>
                 {foreach from=$facultades item=facultad}
-                    <option value="{$facultad}" {if ($smarty.get.facultad|default:'') == $facultad}selected{/if}>{$facultad}</option>
+                    {* Aquí se asume que el agrupador completo ya está calculado (por ejemplo "EING") *}
+                    <option value="{$votacion.agrupador}" {if $votacion.facultad == $facultad}selected{/if}>{$facultad}</option>
                 {/foreach}
             </select>
         </div>
@@ -170,18 +168,27 @@
         <div class="form-group">
             <label for="fecha_inicio">Fecha de inicio:</label>
             <input type="datetime-local" name="fecha_inicio" id="fecha_inicio"
-                value="<?php echo isset($_GET['fecha_inicio']) && strpos($_GET['fecha_inicio'], ' ') !== false ? smarty_modifier_truncate(smarty_modifier_replace($_GET['fecha_inicio'],' ','T'),16,'') : ''; ?>"
-                required>
+                value="{$votacion.inicio}" required>
         </div>
 
         <div class="form-group">
             <label for="fecha_fin">Fecha de fin:</label>
             <input type="datetime-local" name="fecha_fin" id="fecha_fin"
-                value="<?php echo isset($_GET['fecha_fin']) && strpos($_GET['fecha_fin'], ' ') !== false ? smarty_modifier_truncate(smarty_modifier_replace($_GET['fecha_fin'],' ','T'),16,'') : ''; ?>"
-                required>
+                value="{$votacion.fin}" required>
         </div>
 
-        <button type="submit">Guardar Votación</button>
+        {* CAMBIO 3: Si manejas el tipo de dependiente como campo aparte, también lo enviamos *}
+        <div class="form-group">
+            <label for="id_tipo_dependiente">Tipo de dependiente:</label>
+            <select name="id_tipo_dependiente" id="id_tipo_dependiente">
+                <option value="">-- Seleccione --</option>
+                {foreach from=$tipos_dependiente item=dep}
+                    <option value="{$dep}" {if $votacion.tipo_dependiente == $dep}selected{/if}>{$dep}</option>
+                {/foreach}
+            </select>
+        </div>
+
+        <button type="submit">Guardar Cambios</button>
     </form>
 </div>
 

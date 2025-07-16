@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.5.5, created on 2025-07-15 22:48:02
+/* Smarty version 4.5.5, created on 2025-07-16 22:43:09
   from 'C:\Xampp\htdocs\frotend-moduloVotaciones\templates\editar_votacion.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.5.5',
-  'unifunc' => 'content_6876be82e500f8_97411066',
+  'unifunc' => 'content_68780edd847923_37793568',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5141b9076752179e1dec2247fd164daf5b46eefb' => 
     array (
       0 => 'C:\\Xampp\\htdocs\\frotend-moduloVotaciones\\templates\\editar_votacion.tpl',
-      1 => 1752612446,
+      1 => 1752698571,
       2 => 'file',
     ),
   ),
@@ -20,24 +20,24 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6876be82e500f8_97411066 (Smarty_Internal_Template $_smarty_tpl) {
+function content_68780edd847923_37793568 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_3346668376876be82e295b9_16676123', "contenido");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_112588124568780edd82a2d3_32105917', "contenido");
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "layout.tpl");
 }
 /* {block "contenido"} */
-class Block_3346668376876be82e295b9_16676123 extends Smarty_Internal_Block
+class Block_112588124568780edd82a2d3_32105917 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'contenido' => 
   array (
-    0 => 'Block_3346668376876be82e295b9_16676123',
+    0 => 'Block_112588124568780edd82a2d3_32105917',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -173,26 +173,23 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 </style>
 
 <div class="form-container">
-    <h2>Editar Votación</h2>     <?php if ((isset($_GET['error'])) && $_GET['error'] == "faltan_datos") {?>
-        <div class="alert alert-error">
-            ⚠️ Todos los campos del formulario son obligatorios.
-        </div>
-    <?php }?>
-    <?php if ((isset($_GET['error'])) && $_GET['error'] == "error_sistema") {?>
-        <div class="alert alert-error">
-            ⚠️ <?php echo (($tmp = $_GET['mensaje'] ?? null)===null||$tmp==='' ? "Error del sistema" ?? null : $tmp);?>
+    <h2>Editar Votación</h2>
 
-        </div>
-    <?php }?>
     <?php if ((isset($_smarty_tpl->tpl_vars['error_mensaje']->value))) {?>
         <div class="alert alert-error">
             ⚠️ <?php echo $_smarty_tpl->tpl_vars['error_mensaje']->value;?>
 
         </div>
     <?php }?>
-    <form method="post" action="crear_votacion.php">         <div class="form-group">
-            <label for="tipo_votacion">Tipo de votación:</label>
-            <select name="tipo_votacion" id="tipo_votacion" required>
+
+        <form method="post" action="modificar_votacion.php">
+    
+                <input type="hidden" name="id_tipo_solicitud" value="<?php echo $_smarty_tpl->tpl_vars['votacion']->value['id'];?>
+">
+
+        <div class="form-group">
+            <label for="tipo_solicitud">Tipo de votación:</label>
+            <select name="tipo_solicitud" id="tipo_solicitud" required>
                 <option value="">-- Seleccione --</option>
                 <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['tipos_votacion']->value, 'tipo');
@@ -201,7 +198,7 @@ if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['tipo']->value) {
 $_smarty_tpl->tpl_vars['tipo']->do_else = false;
 ?>
                     <option value="<?php echo $_smarty_tpl->tpl_vars['tipo']->value;?>
-" <?php if (((($tmp = $_GET['tipo_votacion'] ?? null)===null||$tmp==='' ? '' ?? null : $tmp)) == $_smarty_tpl->tpl_vars['tipo']->value) {?>selected<?php }?>><?php echo $_smarty_tpl->tpl_vars['tipo']->value;?>
+" <?php if ($_smarty_tpl->tpl_vars['votacion']->value['tipo'] == $_smarty_tpl->tpl_vars['tipo']->value) {?>selected<?php }?>><?php echo $_smarty_tpl->tpl_vars['tipo']->value;?>
 </option>
                 <?php
 }
@@ -210,8 +207,8 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
         </div>
 
         <div class="form-group">
-            <label for="facultad">Facultad:</label>
-            <select name="facultad" id="facultad" required>
+            <label for="agrupador">Facultad (agrupador):</label>
+            <select name="agrupador" id="agrupador" required>
                 <option value="">-- Seleccione --</option>
                 <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['facultades']->value, 'facultad');
@@ -219,8 +216,8 @@ $_smarty_tpl->tpl_vars['facultad']->do_else = true;
 if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['facultad']->value) {
 $_smarty_tpl->tpl_vars['facultad']->do_else = false;
 ?>
-                    <option value="<?php echo $_smarty_tpl->tpl_vars['facultad']->value;?>
-" <?php if (((($tmp = $_GET['facultad'] ?? null)===null||$tmp==='' ? '' ?? null : $tmp)) == $_smarty_tpl->tpl_vars['facultad']->value) {?>selected<?php }?>><?php echo $_smarty_tpl->tpl_vars['facultad']->value;?>
+                                        <option value="<?php echo $_smarty_tpl->tpl_vars['votacion']->value['agrupador'];?>
+" <?php if ($_smarty_tpl->tpl_vars['votacion']->value['facultad'] == $_smarty_tpl->tpl_vars['facultad']->value) {?>selected<?php }?>><?php echo $_smarty_tpl->tpl_vars['facultad']->value;?>
 </option>
                 <?php
 }
@@ -231,22 +228,37 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
         <div class="form-group">
             <label for="fecha_inicio">Fecha de inicio:</label>
             <input type="datetime-local" name="fecha_inicio" id="fecha_inicio"
-                value="<?php echo '<?php'; ?>
- echo isset($_GET['fecha_inicio']) && strpos($_GET['fecha_inicio'], ' ') !== false ? smarty_modifier_truncate(smarty_modifier_replace($_GET['fecha_inicio'],' ','T'),16,'') : ''; <?php echo '?>'; ?>
-"
-                required>
+                value="<?php echo $_smarty_tpl->tpl_vars['votacion']->value['inicio'];?>
+" required>
         </div>
 
         <div class="form-group">
             <label for="fecha_fin">Fecha de fin:</label>
             <input type="datetime-local" name="fecha_fin" id="fecha_fin"
-                value="<?php echo '<?php'; ?>
- echo isset($_GET['fecha_fin']) && strpos($_GET['fecha_fin'], ' ') !== false ? smarty_modifier_truncate(smarty_modifier_replace($_GET['fecha_fin'],' ','T'),16,'') : ''; <?php echo '?>'; ?>
-"
-                required>
+                value="<?php echo $_smarty_tpl->tpl_vars['votacion']->value['fin'];?>
+" required>
         </div>
 
-        <button type="submit">Guardar Votación</button>
+                <div class="form-group">
+            <label for="id_tipo_dependiente">Tipo de dependiente:</label>
+            <select name="id_tipo_dependiente" id="id_tipo_dependiente">
+                <option value="">-- Seleccione --</option>
+                <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['tipos_dependiente']->value, 'dep');
+$_smarty_tpl->tpl_vars['dep']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['dep']->value) {
+$_smarty_tpl->tpl_vars['dep']->do_else = false;
+?>
+                    <option value="<?php echo $_smarty_tpl->tpl_vars['dep']->value;?>
+" <?php if ($_smarty_tpl->tpl_vars['votacion']->value['tipo_dependiente'] == $_smarty_tpl->tpl_vars['dep']->value) {?>selected<?php }?>><?php echo $_smarty_tpl->tpl_vars['dep']->value;?>
+</option>
+                <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+            </select>
+        </div>
+
+        <button type="submit">Guardar Cambios</button>
     </form>
 </div>
 

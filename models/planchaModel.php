@@ -141,4 +141,20 @@ class planchaModel extends mainModel {
                 WHERE op.ID_OPCION_PREGUNTA = ?";
         return $this->ejecutarConsultaPersonalizada($sql,[$id_opcion_pregunta]);
     }
+    
+
+    // Retorna planchas copn votaciones a partir de cierta fecha 
+    public function listarPlanchasRecientes($fecha_inicio = '2025-06-01') {
+         $sql = "SELECT op.ID_OPCION_PREGUNTA, op.OPCION, op.URL
+                FROM ugc_opcion_pregunta op
+                JOIN ugc_solicitud_preguntas sp ON op.ID_SOLICITUD_PREGUNTA = sp.ID_SOLICITUD_PREGUNTA
+                JOIN ugc_tipo_solicitud ts ON sp.ID_TIPO_SOLICITUD = ts.ID_TIPO_SOLICITUD
+                WHERE ts.FECHA_INICIO >= :fecha";
+
+        $stmt = $this->conectar()->prepare($sql);
+        $stmt->bindParam(':fecha', $fecha_inicio);
+        $stmt->execute();
+        return $stmt;
+    }
+
 }

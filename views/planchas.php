@@ -13,7 +13,8 @@ $smarty->compile_dir = '../templates_c';
 
 try {
     // Obtener planchas reales desde el modelo
-    $planchas_bd = $ctrl->modelo->listarPlanchas()->fetchAll(PDO::FETCH_ASSOC);
+$planchas_bd = $ctrl->modelo->listarPlanchasRecientes()->fetchAll(PDO::FETCH_ASSOC);
+
 
     // Procesar los datos si quieres adaptarlos (opcional)
     $planchas = [];

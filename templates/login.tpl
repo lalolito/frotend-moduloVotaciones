@@ -13,7 +13,7 @@
   </div>
 {/if}
 
-<form method="post" action="controllers/login.php" class="form-login">
+<form method="post" action="views/login.php" class="form-login">
   <div class="form-group">
     <label for="usuario">Usuario o Correo:</label>
     <input type="text" id="usuario" name="usuario" required>

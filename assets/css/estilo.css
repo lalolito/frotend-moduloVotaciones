@@ -505,13 +505,26 @@ button:hover, .btn:hover, .card-button:hover, .menu-card a:hover {
         padding: 3vw 10vw;
     }
 }
+/* Pantallas extra grandes (≥1920px) */
+@media (min-width: 1920px) {
+    main {
+        max-width: 80vw;
+        padding: 3vw 10vw;
+    }
+}
 @media (min-width: 1600px) {
     main {
         max-width: 80vw;
         padding: 3vw 10vw;
     }
 }
-
+/* Pantallas medianas (≥1200px) */
+@media (min-width: 1200px) {
+    main {
+        max-width: 90vw;
+        padding: 2vw 5vw;
+    }
+}
 /* Tablets (≤1024px) */
 @media (max-width: 1024px) {
     main {

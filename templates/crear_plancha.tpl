@@ -26,9 +26,6 @@
             {/foreach}
         </select>
 
-        <label>Agrupador:</label>
-        <input type="text" name="agrupador" required>
-
         <label>Imagen de la plancha:</label>
         <input type="file" name="imagen" accept="image/*" required>
     </fieldset>

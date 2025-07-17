@@ -18,11 +18,15 @@ try {
     // Procesar los datos si quieres adaptarlos (opcional)
     $planchas = [];
     foreach ($planchas_bd as $p) {
+
+        $votacion = $ctrl->modelo->obtenerVotacionDePlancha($p['ID_OPCION_PREGUNTA']);
+        $nombre_votacion = $votacion[0]['TIPO_SOLICITUD'] ?? 'Sin asociacion';
+
         $planchas[] = [
             'id' => $p['ID_OPCION_PREGUNTA'],
             'nombre' => $p['OPCION'],
             'imagen' => $p['URL'],
-            'votacion' => 'Votación asociada', 
+            'votacion' => $nombre_votacion, 
         ];
     }
 

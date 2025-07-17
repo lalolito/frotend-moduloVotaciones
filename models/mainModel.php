@@ -78,5 +78,12 @@ class mainModel {
         $sql->execute();
         return $sql;
     }
+
+
+    public function ejecutarConsultaPersonalizada($sql, $params = []) {
+        $stmt = $this->conectar()->prepare($sql);
+        $stmt->execute($params);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
     
 }

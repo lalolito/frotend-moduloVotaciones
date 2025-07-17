@@ -130,4 +130,15 @@ class planchaModel extends mainModel {
         $row = $sql->fetch(PDO::FETCH_ASSOC);
         return $row ? $row["ID_TIPO_SOLICITUD"] : null;
     }
+
+
+    // Asociar plancha a votación
+    public function obtenerVotacionDePlancha($id_opcion_pregunta) {
+        $sql = "SELECT ts.*
+                FROM ugc_opcion_pregunta op
+                JOIN ugc_solicitud_preguntas sp ON op.ID_SOLICITUD_PREGUNTA = sp.ID_SOLICITUD_PREGUNTA
+                JOIN ugc_tipo_solicitud ts ON sp.ID_TIPO_SOLICITUD = ts.ID_TIPO_SOLICITUD
+                WHERE op.ID_OPCION_PREGUNTA = ?";
+        return $this->ejecutarConsultaPersonalizada($sql,[$id_opcion_pregunta]);
+    }
 }

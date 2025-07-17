@@ -17,9 +17,8 @@ class planchaController {
         $idPregunta = $_POST["pregunta"]  ?? null;
         $idTipo     = $_POST["tipo"]      ?? null;
         $nombre     = $_POST["nombre"]    ?? null;
-        $agrupador  = $_POST["agrupador"] ?? null;
 
-        if (!$idPregunta || !$idTipo || !$nombre || !$agrupador) {
+        if (!$idPregunta || !$idTipo || !$nombre) {
             echo json_encode(["status" => "error", "mensaje" => "Faltan datos requeridos"]);
             exit;
         }

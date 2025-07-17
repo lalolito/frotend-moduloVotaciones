@@ -1,16 +1,17 @@
 <?php
-// Ubicación: controllers/login.php
-
 session_start();
 
-// Simulación de credenciales válidas
-$usuario_valido = "admin";
-$clave_valida = "123456";
+// Usuarios simulados con sus roles
+$usuarios = [
+    'admin' => ['clave' => '123456', 'rol' => 'admin'],
+    'estudiante' => ['clave' => '123456', 'rol' => 'estudiante'],
+    'docente' => ['clave' => '123456', 'rol' => 'docente']
+];
 
 // Validar que los campos estén presentes
-if (!isset($_POST['usuario']) || !isset($_POST['clave']) || 
+if (!isset($_POST['usuario']) || !isset($_POST['clave']) ||
     trim($_POST['usuario']) === '' || trim($_POST['clave']) === '') {
-    
+
     header("Location: ../index.php?error=campos");
     exit;
 }
@@ -18,13 +19,17 @@ if (!isset($_POST['usuario']) || !isset($_POST['clave']) ||
 $usuario = $_POST['usuario'];
 $clave = $_POST['clave'];
 
-// Validar usuario y contraseña (simulado)
-if ($usuario === $usuario_valido && $clave === $clave_valida) {
-    // Guardar sesión (puede expandirse luego)
+// Verificar si el usuario existe y la clave es correcta
+if (isset($usuarios[$usuario]) && $usuarios[$usuario]['clave'] === $clave) {
     $_SESSION['usuario'] = $usuario;
+    $_SESSION['rol'] = $usuarios[$usuario]['rol'];
 
-    // Redirigir a la vista principal
-    header("Location: vista_principal.php");
+    // Redirigir según el rol
+    if ($_SESSION['rol'] === 'admin') {
+        header("Location: ../views/vista_principal.php");
+    } else {
+        header("Location: ../views/vista_usuario.php");
+    }
     exit;
 } else {
     header("Location: ../index.php?error=datos");

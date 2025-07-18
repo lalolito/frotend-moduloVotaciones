@@ -192,5 +192,12 @@ class votacionModel extends mainModel {
             'estado' => $this->verificarVotacionActiva($id_votacion) ? 'ACTIVA' : 'INACTIVA'
         ];
     }
+
+    public function obtenerTiposDeSolicitudUnicos() {
+        $sql = "SELECT DISTINCT TIPO_SOLICITUD FROM ugc_tipo_solicitud ORDER BY TIPO_SOLICITUD ASC";
+        $stmt = $this->conectar()->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_COLUMN);
+    }
 }
 ?>

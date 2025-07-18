@@ -12,20 +12,17 @@ $smarty = new Smarty();
 $smarty->template_dir = '../templates';
 $smarty->compile_dir = '../templates_c';
 
-
 // Procesar formulario si se envía
 if ($_POST) {
-    // Debug temporal
     error_log("=== CREAR VOTACION DEBUG ===");
     error_log("POST recibido: " . print_r($_POST, true));
-    
+
     // Validar que todos los campos estén presentes
     if (empty($_POST['tipo_votacion']) || empty($_POST['facultad']) || 
         empty($_POST['fecha_inicio']) || empty($_POST['fecha_fin'])) {
         
         error_log("Campos faltantes detectados");
-        
-        // Redirigir con error y mantener datos
+
         $params = http_build_query([
             'error' => 'faltan_datos',
             'tipo_votacion' => $_POST['tipo_votacion'] ?? '',
@@ -46,40 +43,45 @@ if ($_POST) {
         'Economía' => 'ECO'
     ];
 
-    // Por defecto, asumimos que es para estudiantes (E)
-    $tipo_dependiente = 'E';
-    $codigo_facultad = $facultades_map[$_POST['facultad']] ?? 'GEN';
+    switch ($_POST['tipo_usuario']) {
+        case 'Docente':
+            $tipo_dependiente = 'D';
+            break;
+        case 'Administrativo':
+            $tipo_dependiente = 'A';
+            break;
+        default:
+            $tipo_dependiente = 'E';
+    }
+
+    $codigo_facultad = $facultades_map[$_POST['facultad']] ?? '';
     $agrupador = $tipo_dependiente . $codigo_facultad;
 
     // Preparar datos para el controlador
     $_POST['tipo_solicitud'] = $_POST['tipo_votacion'];
     $_POST['agrupador'] = $agrupador;
     $_POST['servicio'] = 'VOT';
-    
+
     // Formatear fechas correctamente
     $_POST['fecha_inicio'] = str_replace('T', ' ', $_POST['fecha_inicio']) . ':00';
     $_POST['fecha_fin'] = str_replace('T', ' ', $_POST['fecha_fin']) . ':00';
-
 
     error_log("Datos preparados para controlador:");
     error_log("- tipo_solicitud: " . $_POST['tipo_solicitud']);
     error_log("- agrupador: " . $_POST['agrupador']);
     error_log("- fecha_inicio: " . $_POST['fecha_inicio']);
     error_log("- fecha_fin: " . $_POST['fecha_fin']);
-    error_log("- id_tipo_solicitud: " . ($_POST['id_tipo_solicitud'] ?? 'AUTO'));
 
     try {
         $votacionController = new votacionController();
         $resultado = $votacionController->crearVotacionControlador();
-        
+
         error_log("Resultado del controlador: " . print_r($resultado, true));
 
         if (is_array($resultado) && $resultado['tipo'] == 'limpiar') {
-            // Redirigir con mensaje de éxito
             header("Location: votaciones.php?mensaje=creada&id=" . ($resultado['id_votacion'] ?? ''));
             exit();
         } else {
-            // Mostrar error
             $error_texto = $resultado['texto'] ?? 'Error desconocido';
             error_log("Error del controlador: " . $error_texto);
             $smarty->assign("error_mensaje", $error_texto);
@@ -91,7 +93,7 @@ if ($_POST) {
     }
 }
 
-// Datos para los selectores - adaptados a la base de datos
+// Datos para los selectores
 $tipos_votacion = [
     "Consejo Académico", 
     "Representante Estudiantil", 
@@ -101,14 +103,15 @@ $tipos_votacion = [
     "Representante Administrativo"
 ];
 
-  $facultades = [
-        "Derecho",
-        "Ingeniería",
-        "Economía",
-        "Arquitectura",
-        "Educación"
-    ];
+$facultades = [
+    "Derecho",
+    "Ingeniería",
+    "Economía",
+    "Arquitectura",
+    "Educación"
+];
 
+// Asignar datos a la plantilla
 $smarty->assign("tipos_votacion", $tipos_votacion);
 $smarty->assign("facultades", $facultades);
 $smarty->assign("titulo_pagina", "Crear Votación");

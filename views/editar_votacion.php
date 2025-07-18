@@ -43,14 +43,10 @@ try {
     ];
     
     // Datos para los selectores
-    $tipos_votacion = [
-        "Consejo Académico",
-        "Representante Estudiantil",
-        "Decanatura",
-        "Consejo Directivo",
-        "Representante Docente",
-        "Representante Administrativo"
-    ];
+    
+    
+    $tipos_votacion = $votacionController->obtenerTiposDeSolicitud();
+    
     
     $facultades = [
         "Derecho",
@@ -74,16 +70,12 @@ try {
     $smarty->assign("titulo_pagina", "Editar Votación");
     
     // Mostrar mensajes de error si existen
-    if (isset($_GET['error'])) {
-        $errores = [
-            'campos_vacios' => 'Todos los campos son obligatorios',
-            'fechas_invalidas' => 'Las fechas no son válidas',
-            'agrupador_duplicado' => 'Ya existe una votación con ese agrupador',
-            'error_bd' => $_GET['mensaje'] ?? 'Error en la base de datos'
-        ];
-        
-        $smarty->assign("error_mensaje", $errores[$_GET['error']] ?? 'Error desconocido');
-    }
+if (isset($_GET['error'])) {
+    // Mostrar directamente el mensaje si viene
+    $mensaje_error = $_GET['mensaje'] ?? $_GET['error']; // usa 'mensaje' si está, o 'error' como texto
+    $smarty->assign("error_mensaje", $mensaje_error);
+}
+
     
     // Asignar flag para limpiar URL si hay parámetros de error
     $smarty->assign("limpiar_url", isset($_GET['error']));

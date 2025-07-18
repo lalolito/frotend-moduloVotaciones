@@ -185,13 +185,19 @@ class votacionController extends mainModel {
         }
     }
 
+    # Controlador para obtener tipos de solicitud en edición #
+    public function obtenerTiposDeSolicitud() {
+        return $this->votacionModel->obtenerTiposDeSolicitudUnicos();
+    }
+
     # Controlador para modificar votación #
     public function modificarVotacionControlador() {
         $id_tipo_solicitud = $this->limpiarCadena($_POST['id_tipo_solicitud']);
         $tipo_solicitud = $this->limpiarCadena($_POST['tipo_solicitud']);
         $fecha_inicio = date('Y-m-d H:i:s', strtotime($this->limpiarCadena($_POST['fecha_inicio'])));
         $fecha_fin = date('Y-m-d H:i:s', strtotime($this->limpiarCadena($_POST['fecha_fin'])));
-        $id_tipo_dependiente = $this->limpiarCadena($_POST['id_tipo_dependiente'] ?? null);
+        $id_tipo_dependiente = $_POST['id_tipo_dependiente'] ?? null;
+        $id_tipo_dependiente = trim($id_tipo_dependiente) === '' ? null : $this->limpiarCadena($id_tipo_dependiente);
         $agrupador = $this->limpiarCadena($_POST['agrupador']);
 
         // Validar campos obligatorios
@@ -232,8 +238,12 @@ class votacionController extends mainModel {
             ["campo_nombre" => "AGRUPADOR", "campo_marcador" => ":agrupador", "campo_valor" => $agrupador]
         ];
 
-        if (!empty($id_tipo_dependiente)) {
-            $datos_actualizacion[] = ["campo_nombre" => "ID_TIPO_DEPENDIENTE", "campo_marcador" => ":id_tipo_dependiente", "campo_valor" => $id_tipo_dependiente];
+        if (!is_null($id_tipo_dependiente)) {
+            $datos_actualizacion[] = [
+                "campo_nombre" => "ID_TIPO_DEPENDIENTE",
+                "campo_marcador" => ":id_tipo_dependiente",
+                "campo_valor" => $id_tipo_dependiente !== "" ? $id_tipo_dependiente : null
+            ];
         }
 
         $condicion = [

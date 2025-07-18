@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.5.5, created on 2025-07-16 19:14:53
+/* Smarty version 4.5.5, created on 2025-07-18 23:24:52
   from 'C:\Xampp\htdocs\frotend-moduloVotaciones\templates\crear_votacion.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.5.5',
-  'unifunc' => 'content_6877de0db7cb98_38644555',
+  'unifunc' => 'content_687abba48a8d32_76085305',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'fbe618f1299cfc531e2db87abe28788de0dc1820' => 
     array (
       0 => 'C:\\Xampp\\htdocs\\frotend-moduloVotaciones\\templates\\crear_votacion.tpl',
-      1 => 1752612446,
+      1 => 1752873767,
       2 => 'file',
     ),
   ),
@@ -20,24 +20,24 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6877de0db7cb98_38644555 (Smarty_Internal_Template $_smarty_tpl) {
+function content_687abba48a8d32_76085305 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_13753945036877de0db52e55_54696125', "contenido");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1186089341687abba487b9e8_69662322', "contenido");
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "layout.tpl");
 }
 /* {block "contenido"} */
-class Block_13753945036877de0db52e55_54696125 extends Smarty_Internal_Block
+class Block_1186089341687abba487b9e8_69662322 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'contenido' => 
   array (
-    0 => 'Block_13753945036877de0db52e55_54696125',
+    0 => 'Block_1186089341687abba487b9e8_69662322',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -212,6 +212,17 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
         </div>
 
         <div class="form-group">
+            <label for="tipo_usuario">Tipo de usuario:</label>
+            <select name="tipo_usuario" id="tipo_usuario" required>
+                <option value="">-- Seleccione --</option>
+                <option value="Estudiante" <?php if (((($tmp = $_GET['tipo_usuario'] ?? null)===null||$tmp==='' ? '' ?? null : $tmp)) == 'Estudiante') {?>selected<?php }?>>Estudiante</option>
+                <option value="Docente" <?php if (((($tmp = $_GET['tipo_usuario'] ?? null)===null||$tmp==='' ? '' ?? null : $tmp)) == 'Docente') {?>selected<?php }?>>Docente</option>
+                <option value="Administrativo" <?php if (((($tmp = $_GET['tipo_usuario'] ?? null)===null||$tmp==='' ? '' ?? null : $tmp)) == 'Administrativo') {?>selected<?php }?>>Administrativo</option>
+            </select>
+        </div>
+
+
+        <div class="form-group">
             <label for="facultad">Facultad:</label>
             <select name="facultad" id="facultad" required>
                 <option value="">-- Seleccione --</option>
@@ -268,6 +279,37 @@ function toggleIdManual() {
         inputId.required = false;
     }
 }
+
+function actualizarAgrupador() {
+    const tipoUsuario = document.getElementById("tipo_usuario").value;
+    const facultad = document.getElementById("facultad").value;
+
+    let letra = '';
+    switch (tipoUsuario) {
+        case 'Estudiante': letra = 'E'; break;
+        case 'Docente': letra = 'D'; break;
+        case 'Administrativo': letra = 'A'; break;
+        default: letra = '';
+    }
+
+    const facultadesMap = {
+        'Ingeniería': 'ING',
+        'Derecho': 'DER',
+        'Educación': 'EDU',
+        'Arquitectura': 'ARQ',
+        'Economía': 'ECO'
+    };
+
+    const codFacultad = facultadesMap[facultad] || '';
+    const agrupador = letra + codFacultad;
+
+    const campoAgrupador = document.getElementById("agrupador_generado");
+    if (campoAgrupador) campoAgrupador.value = agrupador;
+}
+
+document.getElementById("tipo_usuario").addEventListener("change", actualizarAgrupador);
+document.getElementById("facultad").addEventListener("change", actualizarAgrupador);
+
 
 // Mantener el estado si viene con error
 <?php if ((isset($_GET['id_tipo_solicitud'])) && $_GET['id_tipo_solicitud'] != '') {?>

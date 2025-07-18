@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.5.5, created on 2025-07-16 22:43:09
+/* Smarty version 4.5.5, created on 2025-07-18 22:50:44
   from 'C:\Xampp\htdocs\frotend-moduloVotaciones\templates\editar_votacion.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.5.5',
-  'unifunc' => 'content_68780edd847923_37793568',
+  'unifunc' => 'content_687ab3a4760793_92512664',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5141b9076752179e1dec2247fd164daf5b46eefb' => 
     array (
       0 => 'C:\\Xampp\\htdocs\\frotend-moduloVotaciones\\templates\\editar_votacion.tpl',
-      1 => 1752698571,
+      1 => 1752868136,
       2 => 'file',
     ),
   ),
@@ -20,24 +20,24 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_68780edd847923_37793568 (Smarty_Internal_Template $_smarty_tpl) {
+function content_687ab3a4760793_92512664 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_112588124568780edd82a2d3_32105917', "contenido");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1897474724687ab3a473f221_57824886', "contenido");
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "layout.tpl");
 }
 /* {block "contenido"} */
-class Block_112588124568780edd82a2d3_32105917 extends Smarty_Internal_Block
+class Block_1897474724687ab3a473f221_57824886 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'contenido' => 
   array (
-    0 => 'Block_112588124568780edd82a2d3_32105917',
+    0 => 'Block_1897474724687ab3a473f221_57824886',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -239,24 +239,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 " required>
         </div>
 
-                <div class="form-group">
-            <label for="id_tipo_dependiente">Tipo de dependiente:</label>
-            <select name="id_tipo_dependiente" id="id_tipo_dependiente">
-                <option value="">-- Seleccione --</option>
-                <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['tipos_dependiente']->value, 'dep');
-$_smarty_tpl->tpl_vars['dep']->do_else = true;
-if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['dep']->value) {
-$_smarty_tpl->tpl_vars['dep']->do_else = false;
-?>
-                    <option value="<?php echo $_smarty_tpl->tpl_vars['dep']->value;?>
-" <?php if ($_smarty_tpl->tpl_vars['votacion']->value['tipo_dependiente'] == $_smarty_tpl->tpl_vars['dep']->value) {?>selected<?php }?>><?php echo $_smarty_tpl->tpl_vars['dep']->value;?>
-</option>
-                <?php
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-            </select>
-        </div>
+
 
         <button type="submit">Guardar Cambios</button>
     </form>

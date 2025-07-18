@@ -158,6 +158,17 @@
         </div>
 
         <div class="form-group">
+            <label for="tipo_usuario">Tipo de usuario:</label>
+            <select name="tipo_usuario" id="tipo_usuario" required>
+                <option value="">-- Seleccione --</option>
+                <option value="Estudiante" {if ($smarty.get.tipo_usuario|default:'') == 'Estudiante'}selected{/if}>Estudiante</option>
+                <option value="Docente" {if ($smarty.get.tipo_usuario|default:'') == 'Docente'}selected{/if}>Docente</option>
+                <option value="Administrativo" {if ($smarty.get.tipo_usuario|default:'') == 'Administrativo'}selected{/if}>Administrativo</option>
+            </select>
+        </div>
+
+
+        <div class="form-group">
             <label for="facultad">Facultad:</label>
             <select name="facultad" id="facultad" required>
                 <option value="">-- Seleccione --</option>
@@ -200,6 +211,37 @@ function toggleIdManual() {
         inputId.required = false;
     }
 }
+
+function actualizarAgrupador() {
+    const tipoUsuario = document.getElementById("tipo_usuario").value;
+    const facultad = document.getElementById("facultad").value;
+
+    let letra = '';
+    switch (tipoUsuario) {
+        case 'Estudiante': letra = 'E'; break;
+        case 'Docente': letra = 'D'; break;
+        case 'Administrativo': letra = 'A'; break;
+        default: letra = '';
+    }
+
+    const facultadesMap = {
+        'Ingeniería': 'ING',
+        'Derecho': 'DER',
+        'Educación': 'EDU',
+        'Arquitectura': 'ARQ',
+        'Economía': 'ECO'
+    };
+
+    const codFacultad = facultadesMap[facultad] || '';
+    const agrupador = letra + codFacultad;
+
+    const campoAgrupador = document.getElementById("agrupador_generado");
+    if (campoAgrupador) campoAgrupador.value = agrupador;
+}
+
+document.getElementById("tipo_usuario").addEventListener("change", actualizarAgrupador);
+document.getElementById("facultad").addEventListener("change", actualizarAgrupador);
+
 
 // Mantener el estado si viene con error
 {if isset($smarty.get.id_tipo_solicitud) && $smarty.get.id_tipo_solicitud != ''}

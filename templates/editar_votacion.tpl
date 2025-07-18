@@ -177,16 +177,7 @@
                 value="{$votacion.fin}" required>
         </div>
 
-        {* CAMBIO 3: Si manejas el tipo de dependiente como campo aparte, también lo enviamos *}
-        <div class="form-group">
-            <label for="id_tipo_dependiente">Tipo de dependiente:</label>
-            <select name="id_tipo_dependiente" id="id_tipo_dependiente">
-                <option value="">-- Seleccione --</option>
-                {foreach from=$tipos_dependiente item=dep}
-                    <option value="{$dep}" {if $votacion.tipo_dependiente == $dep}selected{/if}>{$dep}</option>
-                {/foreach}
-            </select>
-        </div>
+
 
         <button type="submit">Guardar Cambios</button>
     </form>
